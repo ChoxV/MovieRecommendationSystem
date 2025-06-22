@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Recommender System</h1>
+        <p>Discover movies similar to your favorites!</p>
+        
+        <form method="POST">
+            <div class="form-group">
+                <label for="movie">Select a Movie:</label>
+                <select name="movie" id="movie" required>
+                    <option value="">-- Select a Movie --</option>
+                    {% for movie in movie_list %}
+                        <option value="{{ movie }}" {% if selected_movie == movie %}selected{% endif %}>{{ movie }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit">Get Recommendations</button>
+        </form>
+        
+        {% if recommendations is not none %}
+            <div class="results">
+                <h2>Because you liked "{{ selected_movie }}"</h2>
+                
+                {% if selected_poster %}
+                <div class="selected-movie">
+                    <img src="{{ selected_poster }}" alt="{{ selected_movie }}" class="movie-poster">
+                </div>
+                {% endif %}
+                
+                <p>You might also enjoy these movies:</p>
+                
+                {% if recommendations %}
+                    <div class="recommendations">
+                        {% for movie in recommendations %}
+                            <div class="movie-card">
+                                <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="movie-poster">
+                                <p class="movie-title">{{ movie.title }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="no-results">No recommendations found for this movie.</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
