@@ -32,8 +32,8 @@ Installation
 Clone the repository:
 
 bash
-git clone https://github.com/yourusername/movie-recommender.git
-cd movie-recommender
+git clone https://github.com/Choxv/movie-recommender.git
+cd MovieRecommendationSystem
 Install the required packages:
 
 bash
@@ -94,13 +94,6 @@ Modifying the number of recommendations shown
 
 Screenshots
 https://screenshot.png
-
-Future Enhancements
-Add user authentication
-
-Implement rating system
-
-Include more movie details in recommendations
 
 Add search functionality
 
