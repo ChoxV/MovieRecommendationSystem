@@ -5,11 +5,11 @@ import pandas as pd
 app = Flask(__name__)
 
 # Load the movie data and similarity matrix
-movies = pickle.load(open('movie_list.pkl', 'rb'))
-similarity = pickle.load(open('similarity.pkl', 'rb'))
+movies = pickle.load(open('/home/choxv/workc/Projects/MovieRecommendationSystem/movie_list.pkl', 'rb'))
+similarity = pickle.load(open('/home/choxv/workc/Projects/MovieRecommendationSystem/similarity.pkl', 'rb'))
 
 # Load the original dataset to get poster links
-original_data = pd.read_csv('imdb_top_1000.csv')
+original_data = pd.read_csv('/home/choxv/workc/Projects/MovieRecommendationSystem/imdb_top_1000.csv')
 
 def recommend(movie):
     try:
